@@ -14,7 +14,7 @@ import sqlite3
 id_paid = 0
 r = requests.get(url)
 #pprint(r.text)
-
+f = open('example.txt', 'w')
 d = pq(r.text)
 t = d('table.comodities').children()
 for tr in t:
@@ -30,6 +30,8 @@ for tr in t:
 	conn.commit()
 	id_paid += 1
 	conn.close()
+	f.write(naim_paid + '\n')
+#f.close()
 	#pprint(tr.children()[0].text)
 	"""for td in tr.children('td:first'):
 		pprint(td.text)
