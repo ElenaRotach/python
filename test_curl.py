@@ -30,7 +30,16 @@ for tr in t:
 	conn.commit()
 	id_paid += 1
 	conn.close()
-	f.write(naim_paid + '\n')
+	if int(variable) > 0:
+		out_str = '| ' + ('%-10s' % variable)[:4] + ' | ' + ('%-10s' % naim_paid)[:10] + ' |'
+		f.write(out_str + '\n')
+		f.write('---------------------' + '\n')
+	else:
+		f.write('---------------------' + '\n')
+		out_str = '| ' + ('%-10s' % '№')[:4] + ' | ' + ('%-10s' % 'ВАЛЮТА')[:10] + ' |'
+		f.write(out_str + '\n')
+		f.write('---------------------' + '\n')
+
 #f.close()
 	#pprint(tr.children()[0].text)
 	"""for td in tr.children('td:first'):
